@@ -38,10 +38,12 @@ def pose_esitmation(frame, aruco_dict_type, matrix_coefficients, distortion_coef
     if len(corners) > 0:
         for i in range(0, len(ids)):
             # Estimate pose of each marker and return the values rvec and tvec---(different from those of camera coefficients)
-            rvec, tvec, markerPoints = cv2.aruco.estimatePoseSingleMarkers(corners[i], 0.02, matrix_coefficients,
+            rvec, tvec, markerPoints = cv2.aruco.estimatePoseSingleMarkers(corners[i], 0.01, matrix_coefficients,
                                                                        distortion_coefficients)
+            # print(tvec)
             rotation_mat, _ = cv2.Rodrigues(rvec)
-            pose_mat = cv2.hconcat((rotation_mat, tvec))
+            # print(rotation_mat)
+            # pose_mat = cv2.hconcat((rotation_mat, tvec))
             # _, _, _, _, _, _, euler_angles = cv2.decomposeProjectionMatrix(pose_mat)
 
             print("----- markers", i)
@@ -107,3 +109,5 @@ if __name__ == '__main__':
     p_out = p_img.parent.joinpath(f"{p_img.name.split('.')[0]}_pose.png")
     cv2.imwrite(p_out.as_posix(), output)
 
+# Check this one for datawrangling and visualization
+# https://mecaruco2.readthedocs.io/en/latest/notebooks_rst/Aruco/sandbox/ludovic/aruco_calibration_rotation.html

@@ -34,17 +34,17 @@ arucoParams = cv2.aruco.DetectorParameters_create()
 
 counter = 0
 while True:
-	ret, frame = video.read()
+	ret, frame_orig = video.read()
 	counter = counter + 1
 	if ret is False:
 		break
 
 
-	h, w, _ = frame.shape
+	h, w, _ = frame_orig.shape
 
 	width=1000
 	height = int(width*(h/w))
-	frame = cv2.resize(frame, (width, height), interpolation=cv2.INTER_CUBIC)
+	frame = cv2.resize(frame_orig, (width, height), interpolation=cv2.INTER_CUBIC)
 	corners, ids, rejected = cv2.aruco.detectMarkers(frame, arucoDict, parameters=arucoParams)
 
 	detected_markers = aruco_display(corners, ids, rejected, frame)
@@ -57,9 +57,10 @@ while True:
 		name = p_video.name.split('.')[0]
 		p_out = p_video.parent.joinpath(f"{name}_detected").joinpath(f"{name}_frame-{counter}.png")
 		p_out.parent.mkdir(exist_ok=True, parents=True)
-
 		cv2.imwrite(p_out.as_posix(), detected_markers)
-
+		p_out_orig = p_video.parent.joinpath(f"{name}_detected_orig_img").joinpath(f"{name}_frame-{counter}.png")
+		p_out_orig.parent.mkdir(exist_ok=True, parents=True)
+		cv2.imwrite(p_out_orig.as_posix(), frame_orig)
 	if key == ord("q"):
 	    break
 

@@ -11,7 +11,7 @@ aruco_type = 'DICT_5X5_50'
 p_img = pl.Path('C:\\Users\\daniel.abler\\Documents\\repositories\\instrumented-slippers\\output\\aruco_test_pics\\DICT_5X5_50\\20221205_123459.jpg')
 aruco_dict = cv2.aruco.Dictionary_get(ARUCO_DICT[aruco_type])
 
-p_base = pl.Path('C:\\Users\\daniel.abler\\Documents\\repositories\\instrumented-slippers\\output')
+p_base = pl.Path('C:\\Users\daniel.abler\CloudStorage\SWITCHdrive\WORK\Projects\ACTIVE\\2022_SENSE_InstrumentedSlippers\data\\2022-12-06_marker-tests')
 calibration_matrix_path = p_base.joinpath('calibration_matrix.npy')
 distortion_coefficients_path = p_base.joinpath('distortion_coefficients.npy')
 
