@@ -2,6 +2,8 @@
 Sample Command:-
 python detect_aruco_video.py --type DICT_5X5_100 --camera True
 python detect_aruco_video.py --type DICT_5X5_100 --camera False --video test_video.mp4
+
+python scripts/aruco/detect_aruco_video.py --type DICT_5X5_100 --camera False --video /media/dabler/ext1TB/2023-01-12/08_calibration-pattern_video2.avi
 '''
 
 import numpy as np

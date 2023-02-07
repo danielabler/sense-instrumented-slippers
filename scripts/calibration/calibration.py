@@ -1,6 +1,7 @@
 '''
 Sample Usage:-
 python scripts/calibration/calibration.py --dir output/calibration/chessboard-images --square_size 0.020 --width 7 --height 10
+python scripts/calibration/calibration.py --dir output/calibration/chessboard-images --square_size 0.020 --width 7 --height 10
 '''
 
 import numpy as np
