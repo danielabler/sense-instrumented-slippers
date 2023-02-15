@@ -1,5 +1,5 @@
 from analysis.config_analysis import square_size, marker_size, p_calibration_results, aruco_dict, p_raw_data, \
-    p_calibration_matrix, p_distortion_coefficients
+    p_calibration_matrix, p_distortion_coefficients, p_calibration_results_dict
 
 page_size  = 'A4'
 inch_to_mm = 25.4

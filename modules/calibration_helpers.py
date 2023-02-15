@@ -64,4 +64,4 @@ def compute_calibration(corners_found_list, ids_found_list, img_size, board, cri
         distCoeffs=distCoeffsInit,
         flags=flags,
         criteria=criteria)
-    return ret, camera_matrix, distortion_coefficients0, rotation_vectors, translation_vectors
+    return ret, camera_matrix, distortion_coefficients0, rotation_vectors, translation_vectors, stdDeviationsIntrinsics, stdDeviationsExtrinsics, perViewErrors
