@@ -27,16 +27,18 @@ ids_found_list, corners_found_list, img_size = get_corners_ids_from_imgs(p_imgs=
                                                                          criteria=criteria,
                                                                          glob_str='*.png')
 
-error_max = 1
-max_error_max = 0.7
+error_max = 10
+max_error_max = 1
 iteration = 0
 ids_to_process = ids_found_list.copy()
 corners_to_process = corners_found_list.copy()
 
 while error_max > max_error_max:
     logging.info(f"=== iteration {iteration} -- n={len(ids_to_process)}")
+    
     ret, camera_matrix, distortion_coefficients0, rotation_vectors, translation_vectors, stdDeviationsIntrinsics, stdDeviationsExtrinsics, perViewErrors = \
                                         compute_calibration(corners_to_process, ids_to_process, img_size, board, criteria)
+    
     error_max = np.max(perViewErrors)
     indices_error_lt_max = list(np.where(perViewErrors < error_max*0.8)[0])
     ids_to_process = [ids_to_process[i] for i in indices_error_lt_max]
